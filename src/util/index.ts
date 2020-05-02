@@ -1,11 +1,12 @@
 export const debug = (content: any): void => {
     console.log('--- DEBUG ---')
     if (Array.isArray(content)) {
+        console.log('Array', ':')
         console.table(content)
     } else if (Number.isNaN(content)) {
-        console.log(content, ':', 'NaN')
+        console.log('NaN', ':', content)
     } else {
-        console.log(content, ':', Object.prototype.toString.call(content).slice(8, -1))
+        console.log(Object.prototype.toString.call(content).slice(8, -1), ':', content)
     }
 }
 
