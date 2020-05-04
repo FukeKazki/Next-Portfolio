@@ -1,11 +1,12 @@
 import fetch from 'isomorphic-unfetch'
+import {Article} from '../types'
 
 const QiitaURL = 'https://qiita.com/api/v2/users/fukke0906/items'
 
 type QiitaArticle = {
-    title?: string
-    url?: string
-    updated_at?: string
+    title: string
+    url: string
+    updated_at: string
 }
 
 const fetchQiitaJson = async (): Promise<object[] | null> => {
@@ -21,7 +22,7 @@ const fetchQiitaJson = async (): Promise<object[] | null> => {
     }
 }
 
-export const getQiitaArticles = async (): Promise<QiitaArticle[]> => {
+export const getQiitaArticles = async (): Promise<Article[]> => {
     const json = await fetchQiitaJson()
     const articles = json.map((article: QiitaArticle) => {
         return {

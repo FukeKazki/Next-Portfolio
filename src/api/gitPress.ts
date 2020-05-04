@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-unfetch'
 import XMLParser from 'xml2js'
+import {Article} from '../types'
 
 const GitPressAtomURL = 'https://gitpress.io/static/6495a013a74997b89b08be0a51c8eb77bf6652eb934985f92035eb8b75b813d7/atom.xml'
 
@@ -16,7 +17,7 @@ const fetchGitPressXML = async (): Promise<string | null> => {
     }
 }
 
-export const getGitPressArticles = async (): Promise<object[]> => {
+export const getGitPressArticles = async (): Promise<Article[]> => {
     const xml = await fetchGitPressXML()
     const parsed_xml = await XMLParser.parseStringPromise(xml).catch(null)
     const articles = parsed_xml.feed.entry.map(article => {
