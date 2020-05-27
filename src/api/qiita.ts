@@ -3,12 +3,6 @@ import {Article} from '../types'
 
 const QiitaURL = 'https://qiita.com/api/v2/users/fukke0906/items'
 
-type QiitaArticle = {
-    title: string
-    url: string
-    updated_at: string
-}
-
 const fetchQiitaJson = async (): Promise<object[] | null> => {
     try {
         const response = await fetch(QiitaURL)
@@ -24,7 +18,7 @@ const fetchQiitaJson = async (): Promise<object[] | null> => {
 
 export const getQiitaArticles = async (): Promise<Article[]> => {
     const json = await fetchQiitaJson()
-    const articles = json.map((article: QiitaArticle) => {
+    const articles = json.map((article: any) => {
         return {
             title: article.title,
             link: article.url,

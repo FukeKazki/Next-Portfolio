@@ -6,7 +6,7 @@ type Props = {
 }
 
 export default class MyDocument extends Document<Props> {
-    static getInitalProps({renderPage}) {
+    static getInitialProps({renderPage}) {
         const sheet = new ServerStyleSheet()
         const page = renderPage(App => props =>
             sheet.collectStyles(<App {...props} />)
@@ -20,6 +20,7 @@ export default class MyDocument extends Document<Props> {
             <Html lang='ja'>
                 <Head>
                     <meta charSet='utf-8'/>
+                    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet"/>
                     {this.props.styleTags}
                 </Head>
                 <body>
